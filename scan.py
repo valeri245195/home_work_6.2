@@ -38,16 +38,16 @@ def move_file(root_path, path_file):
     category = ''
 
     name = normalize.normalize(name)
-    name_of_file = name + suff
+    name_of_file = name + suff.replace('.', '')
 
     category = 0
     for key, values in dict_extension.items():
 
-        if suff in values:
+        if suff.lower() in values:
             category = key
             extensions.add(suff)
 
-        if suff in archives:
+        if suff.lower() in archives:
             category = 'archives'
             nev_path_dir = Path(root_path / category)
             if not nev_path_dir.exists():
