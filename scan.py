@@ -56,13 +56,18 @@ def move_file(root_path, path_file):
 
             name_of_file = name_of_file.removesuffix(suff)
             nev_path_dir_for_archive = Path(nev_path_dir / name_of_file)
-            nev_path_dir_for_archive.mkdir()
+            try:
+                nev_path_dir_for_archive.mkdir()
+            except:
+                pass
             try:
                 unpack(path_file, nev_path_dir_for_archive)
 
             except:
-                nev_path_dir.unlink()
-
+                try:
+                    nev_path_dir.unlink()
+                except:
+                    pass
             path_file.unlink()
             return None
 
