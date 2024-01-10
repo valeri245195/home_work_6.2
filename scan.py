@@ -38,7 +38,7 @@ def move_file(root_path, path_file):
     category = ''
 
     name = normalize.normalize(name)
-    name_of_file = name + suff.replace('.', '')
+    name_of_file = name + suff.lstrip('.')
 
     category = 0
     for key, values in dict_extension.items():
